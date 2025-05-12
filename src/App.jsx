@@ -1,7 +1,27 @@
 import React from "react";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import AppLayout from "./ui/AppLayout";
+import Home from "./Pages/Home/Home";
+import BookMarked from "./Pages/BookMarked/BookMarked";
+import Series from "./Pages/TvSeriesPage/Series";
+import Movies from "./Pages/Movies/Movies";
 
 function App() {
-  return <div>App</div>;
+  return (
+    <div>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<AppLayout />}>
+            <Route index element={<Navigate replace to="home" />} />
+            <Route path="home" element={<Home />} />
+            <Route path="movie" element={<Movies />} />
+            <Route path="series" element={<Series />} />
+            <Route path="bookmarked" element={<BookMarked />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </div>
+  );
 }
 
 export default App;
