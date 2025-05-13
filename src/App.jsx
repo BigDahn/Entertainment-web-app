@@ -5,6 +5,8 @@ import Home from "./Pages/Home/Home";
 import BookMarked from "./Pages/BookMarked/BookMarked";
 import Series from "./Pages/TvSeriesPage/Series";
 import Movies from "./Pages/Movies/Movies";
+import Login from "./Pages/Auth/Login";
+import Signup from "./Pages/Auth/Signup";
 
 function App() {
   return (
@@ -14,9 +16,12 @@ function App() {
           <Route element={<AppLayout />}>
             <Route index element={<Navigate replace to="home" />} />
             <Route path="home" element={<Home />} />
-            <Route path="movie" element={<Movies />} />
+            <Route path="movies" element={<Movies />} />
+            <Route path="/:name" element={<Movies />} />
             <Route path="series" element={<Series />} />
             <Route path="bookmarked" element={<BookMarked />} />
+            <Route path="login" element={<Login />} />
+            <Route path="signup" element={<Signup />} />
           </Route>
         </Routes>
       </BrowserRouter>
