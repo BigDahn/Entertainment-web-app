@@ -29,14 +29,17 @@ function Signup() {
           className="border-b  border-gray-200 active:outline-none outline-none font-Outfit font-light text-[15px] text-white"
         />
         <button
-          className="bg-[#FC4747] px-3 py-2 rounded-md text-white font-Outfit font-light text-[15px]"
+          className="bg-[#FC4747] px-3 py-2 rounded-md text-white font-Outfit font-light text-[15px] cursor-pointer"
           onClick={() => navigate("/login")}
         >
           Create an account
         </button>
         <h5 className="flex gap-2 text-center items-center justify-center text-white font-Outfit text-[15px] font-light">
           Already have an account?
-          <span className="text-[#FC4747]" onClick={() => navigate("/login")}>
+          <span
+            className="text-[#FC4747] cursor-pointer"
+            onClick={() => navigate("/login")}
+          >
             Login
           </span>
         </h5>

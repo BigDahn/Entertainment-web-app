@@ -24,13 +24,21 @@ function Login() {
           className="border-b  border-gray-200 active:outline-none outline-none font-Outfit text-[15px] font-light text-white"
         />
 
-        <button className="bg-[#FC4747] px-3 py-2 rounded-md text-white font-Outfit font-light text-[15px] w-full" onClick={()=>navigate("/home")}>
+        <button
+          className="bg-[#FC4747] px-3 py-2 rounded-md text-white font-Outfit font-light text-[15px] w-full"
+          onClick={() => navigate("/home")}
+        >
           Login to your account
         </button>
 
         <h5 className="flex gap-2 text-center items-center justify-center text-white font-Outfit text-[15px]">
           Don't have an account?
-          <span className="text-[#FC4747]">Sign up</span>
+          <span
+            className="text-[#FC4747] cursor-pointer"
+            onClick={() => navigate("/signup")}
+          >
+            Sign up
+          </span>
         </h5>
       </form>
     </div>
