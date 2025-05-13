@@ -20,9 +20,9 @@ function App() {
             <Route path="/:name" element={<Movies />} />
             <Route path="series" element={<Series />} />
             <Route path="bookmarked" element={<BookMarked />} />
-            <Route path="login" element={<Login />} />
-            <Route path="signup" element={<Signup />} />
           </Route>
+          <Route path="login" element={<Login />} />
+          <Route path="signup" element={<Signup />} />
         </Routes>
       </BrowserRouter>
     </div>
