@@ -3,9 +3,13 @@ import data from "../data.json";
 
 const EntertainmentContext = createContext();
 
+console.log();
+
 const initialState = {
   data: data,
   trending: data.filter((s) => s.isTrending),
+  movies: data.filter((s) => s.category === "Movie"),
+  series: data.filter((s) => s.category === "TV Series"),
 };
 
 function reducer(state, action) {
@@ -17,13 +21,18 @@ function reducer(state, action) {
 }
 
 function EntertainmentApp({ children }) {
-  const [{ data, trending }, dispatch] = useReducer(reducer, initialState);
+  const [{ data, trending, movies, series }, dispatch] = useReducer(
+    reducer,
+    initialState
+  );
 
   return (
     <EntertainmentContext.Provider
       value={{
         data,
         trending,
+        movies,
+        series,
         dispatch,
       }}
     >
