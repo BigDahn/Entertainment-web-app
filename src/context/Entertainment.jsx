@@ -1,9 +1,15 @@
-import { createContext, useContext, useReducer } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+  useState,
+} from "react";
 import data from "../data.json";
 
 const EntertainmentContext = createContext();
 
-console.log();
+console.log(data.filter((s) => s.title.includes("sd")));
 
 const initialState = {
   data: data,
@@ -14,8 +20,15 @@ const initialState = {
 
 function reducer(state, action) {
   switch (action.type) {
-    case " ": {
-      return {};
+    case "search": {
+      console.log(action.payload);
+      return {
+        ...state,
+        data:
+          action.payload === ""
+            ? data
+            : data.filter((s) => s.title.includes(action.payload)),
+      };
     }
   }
 }
@@ -26,6 +39,8 @@ function EntertainmentApp({ children }) {
     initialState
   );
 
+  const [searchName, setSearchName] = useState("");
+
   return (
     <EntertainmentContext.Provider
       value={{
@@ -33,6 +48,8 @@ function EntertainmentApp({ children }) {
         trending,
         movies,
         series,
+        searchName,
+        setSearchName,
         dispatch,
       }}
     >
