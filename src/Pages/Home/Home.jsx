@@ -1,18 +1,30 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useEntertainment } from "../../context/Entertainment";
+import SearchBar from "../../ui/SearchBar";
 
 function Home() {
-  const { data, trending, searchName } = useEntertainment();
+  const { data, trending, dispatch } = useEntertainment();
 
   const hoverRef = useRef(null);
 
   const Recommended = data.filter((s) => !s.isTrending);
 
   const [name, setName] = useState("");
+  const [searchName, setSearchName] = useState("");
 
-  console.log(searchName);
+  useEffect(() => {
+    dispatch({ type: "search", payload: searchName });
+  }, [dispatch, searchName, setSearchName]);
+
   return (
     <>
+      <SearchBar
+        type={"text"}
+        placeholder="Search for movies or Tv series"
+        className="w-full relative pl-10 py-[0.3rem] outline-none text-white"
+        onChange={(e) => setSearchName(e.target.value)}
+        value={searchName}
+      />
       {searchName ? (
         <main className="grid gap-3">
           <h3 className="font-Outfit text-[32px] font-light text-white">

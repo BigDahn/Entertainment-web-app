@@ -30,6 +30,29 @@ function reducer(state, action) {
             : data.filter((s) => s.title.includes(action.payload)),
       };
     }
+    case "Search_series": {
+      console.log(action.payload);
+      return {
+        ...state,
+        series:
+          action.payload === ""
+            ? data.filter((s) => s.category === "TV Series")
+            : data
+                .filter((s) => s.category === "TV Series")
+                .filter((s) => s.title.includes(action.payload)),
+      };
+    }
+    case "Movies_Search": {
+      return {
+        ...state,
+        movies:
+          action.payload === ""
+            ? data.filter((s) => s.category === "Movie")
+            : data
+                .filter((s) => s.category === "Movie")
+                .filter((s) => s.title.includes(action.payload)),
+      };
+    }
   }
 }
 
@@ -39,8 +62,6 @@ function EntertainmentApp({ children }) {
     initialState
   );
 
-  const [searchName, setSearchName] = useState("");
-
   return (
     <EntertainmentContext.Provider
       value={{
@@ -48,8 +69,7 @@ function EntertainmentApp({ children }) {
         trending,
         movies,
         series,
-        searchName,
-        setSearchName,
+
         dispatch,
       }}
     >
