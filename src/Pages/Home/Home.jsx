@@ -16,6 +16,10 @@ function Home() {
     dispatch({ type: "search", payload: searchName });
   }, [dispatch, searchName, setSearchName]);
 
+  function handleBookmarked(name) {
+    dispatch({ type: "bookmarked", payload: name });
+  }
+
   return (
     <>
       <SearchBar
@@ -102,7 +106,10 @@ function Home() {
                       }`}
                     >
                       <div className="flex items-end justify-end">
-                        <button className="h-8 w-8 bg-black opacity-35 rounded-full flex items-center justify-center cursor-pointer ">
+                        <button
+                          className="h-8 w-8 bg-black opacity-35 rounded-full flex items-center justify-center cursor-pointer "
+                          onClick={() => handleBookmarked(name)}
+                        >
                           {isBookmarked ? (
                             <img src="/assets/icon-bookmark-full.svg" />
                           ) : (

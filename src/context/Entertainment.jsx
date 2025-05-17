@@ -9,7 +9,7 @@ import data from "../data.json";
 
 const EntertainmentContext = createContext();
 
-console.log(data.filter((s) => s.title.includes("sd")));
+console.log(data);
 
 const initialState = {
   data: data,
@@ -51,6 +51,24 @@ function reducer(state, action) {
             : data
                 .filter((s) => s.category === "Movie")
                 .filter((s) => s.title.includes(action.payload)),
+      };
+    }
+    case "bookmarked": {
+      const newData = state.data.map((s) => {
+        if (s.title === action.payload) {
+          return {
+            ...s,
+            isBookmarked: !s.isBookmarked,
+          };
+        }
+        return s;
+      });
+
+      console.log(newData);
+      return {
+        ...state,
+        data: newData,
+        // trending: state.data.filter((s) => s.isTrending),
       };
     }
   }
