@@ -7,7 +7,7 @@ function Loading() {
   useEffect(() => {
     setTimeout(() => {
       dispatch({ type: "loading" });
-    }, 9000);
+    }, 1000);
   });
   return <span class="loader"></span>;
 }

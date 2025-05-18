@@ -27,6 +27,7 @@ function reducer(state, action) {
         ...state,
         isLoading: false,
         fetchedData: state.data,
+        movies: state.fetchedData.filter((s) => s.category === "Movie"),
       };
     }
     case "search": {
@@ -34,8 +35,8 @@ function reducer(state, action) {
         ...state,
         data:
           action.payload === ""
-            ? data
-            : data.filter((s) => s.title.includes(action.payload)),
+            ? state.fetchedData
+            : state.data.filter((s) => s.title.includes(action.payload)),
       };
     }
     case "Search_series": {
@@ -54,8 +55,8 @@ function reducer(state, action) {
         ...state,
         movies:
           action.payload === ""
-            ? data.filter((s) => s.category === "Movie")
-            : data
+            ? state.data.filter((s) => s.category === "Movie")
+            : state.data
                 .filter((s) => s.category === "Movie")
                 .filter((s) => s.title.includes(action.payload)),
       };
@@ -84,6 +85,7 @@ function reducer(state, action) {
           }
           return s;
         }),
+        movies: state.data.filter((s) => s.category === "Movie"),
         // trending: state.data.filter((s) => s.isTrending),
       };
     }

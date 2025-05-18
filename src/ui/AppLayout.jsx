@@ -15,7 +15,7 @@ function AppLayout() {
         className={`${
           isLoading
             ? "px-5 max-w-[120rem]  m-auto"
-            : "px-5 max-w-[120rem] overflow-y-scroll  m-auto"
+            : "px-5 max-w-[120rem] overflow-y-scroll "
         }`}
       >
         {isLoading ? <Loading /> : <Outlet />}
