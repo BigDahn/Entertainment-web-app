@@ -7,9 +7,9 @@ function Loading() {
   useEffect(() => {
     setTimeout(() => {
       dispatch({ type: "loading" });
-    }, 1000);
+    }, 9000);
   });
-  return <div>Loading....</div>;
+  return <span class="loader"></span>;
 }
 
 export default Loading;

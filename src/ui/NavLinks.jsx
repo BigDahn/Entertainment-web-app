@@ -4,7 +4,7 @@ function NavLinks() {
     <div className="flex flex-col gap-6 items-center">
       <NavLink
         to="home"
-        style={({ isActive }) => {
+        style={({ isActive, hover }) => {
           return {
             fill: isActive ? "#FFFFFF" : "#5A698F",
           };
