@@ -13,6 +13,8 @@ console.log(data);
 
 const initialState = {
   data: data,
+  fetchedData: [],
+  isLoading: true,
   trending: data.filter((s) => s.isTrending),
   movies: data.filter((s) => s.category === "Movie"),
   series: data.filter((s) => s.category === "TV Series"),
@@ -20,8 +22,14 @@ const initialState = {
 
 function reducer(state, action) {
   switch (action.type) {
+    case "loading": {
+      return {
+        ...state,
+        isLoading: false,
+        fetchedData: state.data,
+      };
+    }
     case "search": {
-      console.log(action.payload);
       return {
         ...state,
         data:
@@ -31,7 +39,6 @@ function reducer(state, action) {
       };
     }
     case "Search_series": {
-      console.log(action.payload);
       return {
         ...state,
         series:
@@ -68,6 +75,15 @@ function reducer(state, action) {
       return {
         ...state,
         data: newData,
+        fetchedData: state.data.map((s) => {
+          if (s.title === action.payload) {
+            return {
+              ...s,
+              isBookmarked: !s.isBookmarked,
+            };
+          }
+          return s;
+        }),
         // trending: state.data.filter((s) => s.isTrending),
       };
     }
@@ -75,10 +91,8 @@ function reducer(state, action) {
 }
 
 function EntertainmentApp({ children }) {
-  const [{ data, trending, movies, series }, dispatch] = useReducer(
-    reducer,
-    initialState
-  );
+  const [{ data, trending, movies, series, isLoading, fetchedData }, dispatch] =
+    useReducer(reducer, initialState);
 
   return (
     <EntertainmentContext.Provider
@@ -87,7 +101,8 @@ function EntertainmentApp({ children }) {
         trending,
         movies,
         series,
-
+        isLoading,
+        fetchedData,
         dispatch,
       }}
     >
