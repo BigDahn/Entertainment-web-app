@@ -15,9 +15,10 @@ const initialState = {
   data: data,
   fetchedData: [],
   isLoading: true,
-  trending: data.filter((s) => s.isTrending),
-  movies: data.filter((s) => s.category === "Movie"),
-  series: data.filter((s) => s.category === "TV Series"),
+  trending: [],
+  movies: [],
+  series: [],
+  isBookmarked: [],
 };
 
 function reducer(state, action) {
@@ -28,14 +29,15 @@ function reducer(state, action) {
         isLoading: false,
         fetchedData: state.data,
         movies: state.fetchedData.filter((s) => s.category === "Movie"),
+        series: state.fetchedData.filter((s) => s.category === "TV Series"),
       };
     }
     case "search": {
       return {
         ...state,
-        data:
+        fetchedData:
           action.payload === ""
-            ? state.fetchedData
+            ? state.data
             : state.data.filter((s) => s.title.includes(action.payload)),
       };
     }
@@ -44,8 +46,8 @@ function reducer(state, action) {
         ...state,
         series:
           action.payload === ""
-            ? data.filter((s) => s.category === "TV Series")
-            : data
+            ? state.data.filter((s) => s.category === "TV Series")
+            : state.data
                 .filter((s) => s.category === "TV Series")
                 .filter((s) => s.title.includes(action.payload)),
       };
@@ -72,11 +74,22 @@ function reducer(state, action) {
         return s;
       });
 
-      console.log(newData);
+      console.log(
+        state.fetchedData
+          .filter((s) => s.title != action.payload)
+          .filter((s) => s.category === "Movie" && s.isBookmarked)
+      );
+
+      console.log(
+        state.fetchedData
+          .filter((s) => s.title != action.payload)
+          .filter((s) => s.category === "Movie" && s.isBookmarked)
+      );
+
       return {
         ...state,
         data: newData,
-        fetchedData: state.data.map((s) => {
+        fetchedData: state.fetchedData.map((s) => {
           if (s.title === action.payload) {
             return {
               ...s,
@@ -85,20 +98,40 @@ function reducer(state, action) {
           }
           return s;
         }),
-        movies: state.data.filter((s) => s.category === "Movie"),
-        // trending: state.data.filter((s) => s.isTrending),
+        movies: state.movies.map((s) => {
+          if (s.title === action.payload) {
+            return {
+              ...s,
+              isBookmarked: !s.isBookmarked,
+            };
+          }
+          return s;
+        }),
+        series: state.series.map((s) => {
+          if (s.title === action.payload) {
+            return {
+              ...s,
+              isBookmarked: !s.isBookmarked,
+            };
+          }
+          return s;
+        }),
+        isBookmarked: state.data.filter((s) => s.title != action.payload),
       };
     }
   }
 }
 
 function EntertainmentApp({ children }) {
-  const [{ data, trending, movies, series, isLoading, fetchedData }, dispatch] =
-    useReducer(reducer, initialState);
+  const [
+    { data, trending, movies, series, isLoading, isBookmarked, fetchedData },
+    dispatch,
+  ] = useReducer(reducer, initialState);
 
   return (
     <EntertainmentContext.Provider
       value={{
+        isBookmarked,
         data,
         trending,
         movies,

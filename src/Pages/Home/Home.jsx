@@ -3,7 +3,7 @@ import { useEntertainment } from "../../context/Entertainment";
 import SearchBar from "../../ui/SearchBar";
 
 function Home() {
-  const { data, trending, dispatch, fetchedData } = useEntertainment();
+  const { dispatch, fetchedData } = useEntertainment();
 
   const hoverRef = useRef(null);
   const [name, setName] = useState("");
@@ -11,6 +11,7 @@ function Home() {
     dispatch({ type: "bookmarked", payload: name });
   }
 
+  console.log(fetchedData);
   const [searchName, setSearchName] = useState("");
 
   useEffect(() => {
@@ -29,10 +30,12 @@ function Home() {
       {searchName ? (
         <main className="grid gap-3">
           <h3 className="font-Outfit text-[32px] font-light text-white">
-            Found {data.length} results of {`"${searchName}"`}{" "}
+            Found{" "}
+            {fetchedData.filter((s) => s.title.includes(searchName)).length}{" "}
+            results of {`"${searchName}"`}{" "}
           </h3>
           <div className="grid grid-cols-4 gap-4">
-            {data.map((s, i) => {
+            {fetchedData.map((s, i) => {
               const { title, year, rating, category, thumbnail, isBookmarked } =
                 s;
               const { regular } = thumbnail;
@@ -58,7 +61,7 @@ function Home() {
                       <div className="flex items-end justify-end">
                         <button
                           className="h-8 w-8 bg-black opacity-35 rounded-full flex items-center justify-center cursor-pointer "
-                          onClick={() => handleBookmarked(name)}
+                          onClick={() => handleBookmarked(title)}
                         >
                           {isBookmarked ? (
                             <img src="/assets/icon-bookmark-full.svg" />
@@ -141,7 +144,7 @@ function Home() {
                         <div className="flex items-end justify-end">
                           <button
                             className="h-8 w-8 bg-black opacity-35 rounded-full flex items-center justify-center cursor-pointer "
-                            onClick={() => handleBookmarked(name)}
+                            onClick={() => handleBookmarked(title)}
                           >
                             {isBookmarked ? (
                               <img src="/assets/icon-bookmark-full.svg" />
@@ -224,7 +227,7 @@ function Home() {
                           <div className="flex items-end justify-end">
                             <button
                               className="h-8 w-8 bg-black opacity-35 rounded-full flex items-center justify-center cursor-pointer "
-                              onClick={() => handleBookmarked(name)}
+                              onClick={() => handleBookmarked(title)}
                             >
                               {isBookmarked ? (
                                 <img src="/assets/icon-bookmark-full.svg" />

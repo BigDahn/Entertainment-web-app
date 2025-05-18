@@ -3,8 +3,9 @@ import { useEntertainment } from "../../context/Entertainment";
 import SearchBar from "../../ui/SearchBar";
 
 function Movies() {
-  const { movies, dispatch, fetchedData } = useEntertainment();
+  const { movies, dispatch } = useEntertainment();
 
+  console.log(movies);
   const [searchName, setSearchName] = useState("");
 
   useEffect(() => {
@@ -63,7 +64,7 @@ function Movies() {
                     <div className="flex items-end justify-end">
                       <button
                         className="h-8 w-8 bg-black opacity-35 rounded-full flex items-center justify-center cursor-pointer "
-                        onClick={() => handleBookmarked(name)}
+                        onClick={() => handleBookmarked(title)}
                       >
                         {isBookmarked ? (
                           <img src="/assets/icon-bookmark-full.svg" />
