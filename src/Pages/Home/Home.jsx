@@ -207,9 +207,8 @@ function Home() {
                   const { regular } = thumbnail;
 
                   return (
-                    <section className="flex flex-col gap-1">
+                    <section className="flex flex-col gap-1" key={i}>
                       <div
-                        key={i}
                         className={`font-Outfit text-white cursor-pointer w-[280px]  h-[174px] rounded-lg bg-cover bg-no-repeat relative`}
                         style={{ backgroundImage: `url(${regular.large})` }}
                         ref={hoverRef}
