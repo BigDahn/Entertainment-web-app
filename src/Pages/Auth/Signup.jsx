@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/Authentication";
 
 function Signup() {
-  const { dispatch, user } = useAuth();
+  const { dispatch, email: Email } = useAuth();
   const navigate = useNavigate();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -11,7 +11,7 @@ function Signup() {
 
   const [error, setError] = useState("");
 
-  console.log(user);
+  console.log(Email);
 
   function handleSubmit(e) {
     e.preventDefault();

@@ -11,7 +11,6 @@ function Home() {
     dispatch({ type: "bookmarked", payload: name });
   }
 
-  console.log(fetchedData);
   const [searchName, setSearchName] = useState("");
 
   useEffect(() => {

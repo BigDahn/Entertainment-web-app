@@ -1,12 +1,13 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useEffect, useReducer } from "react";
+import getLocalstorage from "../utils/getLocalStorage";
 
 const AuthContext = createContext();
 
 const initialState = {
-  user: [],
+  user: getLocalstorage(),
   email: "",
   password: "",
-  isAuthenticated: false,
+  isAuthenticated: getLocalstorage(),
   isLoading: true,
 };
 
@@ -27,11 +28,12 @@ function reducer(state, action) {
       };
     }
     case "login": {
+      
       return {
         ...state,
         isAuthenticated:
-          state.email === action.payload.email &&
-          state.password === action.payload.password
+          state.user.email === action.payload.email &&
+          state.user.password === action.payload.password
             ? true
             : false,
       };
@@ -41,6 +43,10 @@ function reducer(state, action) {
 function Authentication({ children }) {
   const [{ user, email, password, isAuthenticated, isLoading }, dispatch] =
     useReducer(reducer, initialState);
+  useEffect(() => {
+    localStorage.setItem("user", JSON.stringify(user));
+  
+  }, [user]);
   return (
     <AuthContext.Provider
       value={{

@@ -8,9 +8,9 @@ function Login() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
-  const { dispatch, user } = useAuth();
+  const { dispatch, email: Email, isAuthenticated } = useAuth();
 
-  console.log(user);
+  console.log(isAuthenticated);
   const onSubmit = (e) => {
     e.preventDefault();
     if (!email || !password) return;
