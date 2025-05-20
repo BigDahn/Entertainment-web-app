@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useEntertainment } from "../../context/Entertainment";
 import SearchBar from "../../ui/SearchBar";
+import NotFound from "../../ui/NotFound";
 
 function Home() {
   const { dispatch, fetchedData } = useEntertainment();
@@ -28,11 +29,18 @@ function Home() {
       />
       {searchName ? (
         <main className="grid gap-3">
-          <h3 className="font-Outfit text-[32px] font-light text-white">
-            Found{" "}
-            {fetchedData.filter((s) => s.title.includes(searchName)).length}{" "}
-            results of {`"${searchName}"`}{" "}
-          </h3>
+          <div>
+            {fetchedData.filter((s) => s.title.includes(searchName)).length <=
+            0 ? (
+              <NotFound />
+            ) : (
+              <h3 className="font-Outfit text-[32px] font-light text-white">
+                Found{" "}
+                {fetchedData.filter((s) => s.title.includes(searchName)).length}{" "}
+                results of {`"${searchName}"`}{" "}
+              </h3>
+            )}
+          </div>
           <div className="grid grid-cols-4 gap-4">
             {fetchedData.map((s, i) => {
               const { title, year, rating, category, thumbnail, isBookmarked } =
@@ -48,7 +56,6 @@ function Home() {
                     ref={hoverRef}
                     onMouseEnter={() => setName(title)}
                     onMouseLeave={() => setName("")}
-                    //onClick={() => alert("kkk")}
                   >
                     <section
                       className={`${
@@ -107,9 +114,9 @@ function Home() {
         </main>
       ) : (
         <main className="grid gap-2">
-          <div className="max-h-[295px] overflow-hidden grid gap-3 ">
+          <div className="overflow-hidden grid gap-3 ">
             <h2 className="font-Outfit text-white text-[32px]">Trending</h2>
-            <article className="grid grid-cols-[450px_450px_450px_450px_450px]  gap-5 overflow-hidden ">
+            <article className="grid grid-cols-[450px_450px_450px_450px_450px]  gap-2 overflow-x-scroll overflow-hidden ">
               {fetchedData
                 .filter((s) => s.isTrending)
                 .map((s, i) => {
@@ -137,7 +144,7 @@ function Home() {
                         className={`${
                           name === title
                             ? "overflow-hidden flex flex-col px-3 gap-[2.7rem] py-3 justify-between"
-                            : " overflow-hidden flex flex-col px-3 gap-[7.9rem] py-3 justify-between"
+                            : " overflow-hidden flex flex-col px-3 gap-[7.9rem] py-3 justify-between "
                         }`}
                       >
                         <div className="flex items-end justify-end">

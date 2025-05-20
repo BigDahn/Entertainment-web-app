@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useEntertainment } from "../../context/Entertainment";
 import SearchBar from "../../ui/SearchBar";
+import NotFound from "../../ui/NotFound";
 
 function Movies() {
   const { movies, dispatch } = useEntertainment();
@@ -30,14 +31,22 @@ function Movies() {
         value={searchName}
       />
       {searchName && (
-        <h3 className="font-Outfit text-[32px] font-light text-white">
-          Found {movies.length} results of {`"${searchName}"`}{" "}
-        </h3>
+        <div>
+          {movies.length <= 0 ? (
+            <NotFound />
+          ) : (
+            <h3 className="font-Outfit text-[32px] font-light text-white">
+              Found {movies.length} results of {`"${searchName}"`}{" "}
+            </h3>
+          )}
+        </div>
       )}
       <div className="grid gap-3">
-        <h3 className="font-Outfit font-light text-[32px] text-white">
-          Movies
-        </h3>
+        {movies.length > 0 && (
+          <h3 className="font-Outfit font-light text-[32px] text-white">
+            Movies
+          </h3>
+        )}
         <div className="grid grid-cols-[280px_280px_280px_280px] gap-3">
           {movies.map((s, i) => {
             const { title, year, rating, category, thumbnail, isBookmarked } =

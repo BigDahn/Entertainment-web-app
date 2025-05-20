@@ -35,14 +35,14 @@ function Login() {
           type="text"
           name="email"
           placeholder="Email address"
-          className="border-b  border-gray-200 active:outline-none outline-none py-1 px-1 text-white font-Outfit text-[15px] font-light focus:text-red-500 cursor-pointer"
+          className="border-b autofill:shadow-[inset_0_0_0px_1000px_#161D2F]  border-gray-200  autofill:text-gray-600 active:outline-none outline-none py-1 px-1 text-white font-Outfit text-[15px] font-light focus:text-red-500 cursor-pointer"
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
           type="password"
           name="password"
           placeholder="Password"
-          className="border-b  border-gray-200 active:outline-none outline-none py-1 px-1 font-Outfit text-[15px] font-light text-white"
+          className="border-b  border-gray-200 active:outline-none active:border-none outline-none py-1 px-1 font-Outfit text-[15px] font-light text-white"
           onChange={(e) => setPassword(e.target.value)}
         />
 
