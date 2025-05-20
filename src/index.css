@@ -27,23 +27,24 @@ body{
 }
 
 ::-webkit-scrollbar {
-    width: 2px;
+    width: 4px;
+    height: 4px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background: #FC4747;
+    background: #10141E;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 2px;
+    background: #FFFFFF;
+    border-radius: 4px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background: #FC4747;
 }
 
 
