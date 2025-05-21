@@ -37,11 +37,15 @@ function Home() {
               <h3 className="font-Outfit text-[32px] font-light text-white">
                 Found{" "}
                 {fetchedData.filter((s) => s.title.includes(searchName)).length}{" "}
-                results of {`"${searchName}"`}{" "}
+                {fetchedData.filter((s) => s.title.includes(searchName))
+                  .length > 1
+                  ? "results"
+                  : "result"}{" "}
+                for {`"${searchName}"`}{" "}
               </h3>
             )}
           </div>
-          <div className="grid grid-cols-4 gap-4">
+          <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-4">
             {fetchedData.map((s, i) => {
               const { title, year, rating, category, thumbnail, isBookmarked } =
                 s;
@@ -203,7 +207,7 @@ function Home() {
             <h3 className="font-Outfit font-light text-white text-[32px]">
               Recommended for you
             </h3>
-            <div className="grid grid-cols-4 gap-7 py-4">
+            <div className="grid md:grid-cols-3 gap-6 lg:grid-cols-4 lg:gap-7 py-4">
               {fetchedData
                 .filter((s) => !s.isTrending)
                 .map((s, i) => {
@@ -220,7 +224,7 @@ function Home() {
                   return (
                     <section className="flex flex-col gap-1" key={i}>
                       <div
-                        className={`font-Outfit text-white cursor-pointer w-[280px]  h-[174px] rounded-lg bg-cover bg-no-repeat relative`}
+                        className={`font-Outfit text-white cursor-pointer w-[200px] h-[140px] lg:w-[280px]  lg:h-[174px] rounded-lg bg-cover bg-no-repeat relative`}
                         style={{ backgroundImage: `url(${regular.large})` }}
                         ref={hoverRef}
                         onMouseEnter={() => setName(title)}

@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 function NavLinks() {
   return (
-    <div className="flex flex-col gap-6 items-center">
+    <div className="flex lg:flex-col gap-[2rem] lg:gap-6 items-center">
       <NavLink
         to="home"
         style={({ isActive }) => {
