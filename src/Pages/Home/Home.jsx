@@ -150,8 +150,8 @@ function Home() {
                         <section
                           className={`${
                             name === title
-                              ? "overflow-hidden flex flex-col px-3 gap-[0.5rem] lg:gap-[2.7rem] py-3 justify-between"
-                              : " overflow-hidden flex flex-col px-3 gap-[3.5rem] lg:gap-[7.9rem] py-3 justify-between "
+                              ? "overflow-hidden flex flex-col px-3 gap-[0.2rem] lg:gap-[2.7rem] py-3 justify-between"
+                              : " overflow-hidden flex flex-col px-3 gap-[2.9rem] lg:gap-[7.9rem] py-3 justify-between "
                           }`}
                         >
                           <div className="flex items-end justify-end">
@@ -167,8 +167,8 @@ function Home() {
                             </button>
                           </div>
                           {name === title && (
-                            <div className="justify-center flex transition ease-linear duration-700 translate-x-3 ">
-                              <div className="flex items-center gap-4 opacity-[60%] bg-[#757b87]  border-[#979797] justify-evenly h-10 lg:h-10 w-[110px] rounded-full ">
+                            <div className="justify-center flex transition ease-linear duration-700 lg:translate-x-3 ">
+                              <div className="flex items-center gap-4 opacity-[60%] bg-[#757b87]  border-[#979797] justify-evenly w-[100px] h-10 lg:w-[110px] rounded-full ">
                                 <img src="/assets/icon-play.svg" />
                                 <h3 className="font-Outfit text-white">
                                   {" "}
