@@ -25,7 +25,7 @@ function Login() {
     <div className="flex flex-col gap-[4rem] items-center justify-center max-w-[100vh]   m-auto h-[100vh] ">
       <img src="/assets/logo.svg" />
       <form
-        className="flex-col flex gap-5 bg-[#161D2F] w-[46%] px-6 py-[2rem]  rounded-lg"
+        className="flex-col flex gap-5 bg-[#161D2F] lg:w-[46%] px-6 py-[2rem]  rounded-lg"
         onSubmit={(e) => onSubmit(e)}
       >
         <h2 className="text-white font-light  text-[32px] font-Outfit">

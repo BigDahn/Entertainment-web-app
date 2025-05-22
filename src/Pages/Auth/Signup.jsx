@@ -45,7 +45,7 @@ function Signup() {
         <p>{error}</p>
       </div>
       <form
-        className="flex-col flex gap-5 bg-[#161D2F] w-[46%] px-6 py-[2rem]  rounded-lg"
+        className="flex-col flex gap-5 bg-[#161D2F] lg:w-[46%] px-6 py-[2rem]  rounded-lg"
         onSubmit={(e) => handleSubmit(e)}
       >
         <h2 className="text-white font-light text-[32px] font-Outfit ">

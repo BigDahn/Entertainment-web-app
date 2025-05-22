@@ -9,13 +9,13 @@ function AppLayout() {
   const { isLoading } = useEntertainment();
 
   return (
-    <div className="grid lg:grid-cols-[70px_1fr] grid-rows-[4rem_1fr] lg:grid-rows-[40rem_1fr] gap-3 m-auto h-[100vh] py-3 px-4 overflow-hidden max-w-[120rem]">
+    <div className="grid lg:grid-cols-[70px_1fr] grid-rows-[4rem_1fr] lg:grid-rows-[40rem_1fr] gap-3 m-auto h-[100vh] py-3 px-2 lg:px-4 overflow-hidden max-w-[120rem]">
       <Sidebar />
       <div
         className={`${
           isLoading
-            ? "px-5 max-w-[120rem]  m-auto"
-            : "px-5 max-w-[120rem] overflow-y-scroll "
+            ? " px-2 lg:px-5 max-w-[120rem]  m-auto"
+            : " px-2 lg:px-5 max-w-[120rem] overflow-y-scroll "
         }`}
       >
         {isLoading ? <Loading /> : <Outlet />}

@@ -118,9 +118,11 @@ function Home() {
         </main>
       ) : (
         <main className="grid grid-rows-1 gap-4">
-          <div className="max-h-[300px] max-w-[120rem] overflow-hidden grid gap-3 overflow-x-scroll ">
-            <h2 className="font-Outfit text-white text-[32px]">Trending</h2>
-            <article className="grid grid-cols-[450px_450px_450px_450px_450px]  gap-5   ">
+          <div className="max-h-[300px] max-w-[120rem] overflow-hidden grid gap-3 overflow-y-hidden ">
+            <h2 className="font-Outfit text-white text-[20px] lg:text-[32px] ">
+              Trending
+            </h2>
+            <article className="grid grid-cols-[240px_240px_240px_240px_240px] md:grid-cols-[470px_470px_470px_470px_470px] lg:grid-cols-[450px_450px_450px_450px_450px] gap-3 lg:gap-5 overflow-x-scroll overflow-hidden ">
               {fetchedData
                 .filter((s) => s.isTrending)
                 .map((s, i) => {
@@ -138,7 +140,7 @@ function Home() {
                     <>
                       <div
                         key={i}
-                        className={`font-Outfit text-white cursor-pointer  h-[230px] rounded-lg bg-cover bg-no-repeat relative`}
+                        className={`font-Outfit text-white cursor-pointer  h-[140px] lg:h-[230px] rounded-lg bg-cover bg-no-repeat relative`}
                         style={{ backgroundImage: `url(${trending.large})` }}
                         ref={hoverRef}
                         onMouseEnter={() => setName(title)}
@@ -148,8 +150,8 @@ function Home() {
                         <section
                           className={`${
                             name === title
-                              ? "overflow-hidden flex flex-col px-3 gap-[2.7rem] py-3 justify-between"
-                              : " overflow-hidden flex flex-col px-3 gap-[7.9rem] py-3 justify-between "
+                              ? "overflow-hidden flex flex-col px-3 gap-[0.5rem] lg:gap-[2.7rem] py-3 justify-between"
+                              : " overflow-hidden flex flex-col px-3 gap-[3.5rem] lg:gap-[7.9rem] py-3 justify-between "
                           }`}
                         >
                           <div className="flex items-end justify-end">
@@ -166,7 +168,7 @@ function Home() {
                           </div>
                           {name === title && (
                             <div className="justify-center flex transition ease-linear duration-700 translate-x-3 ">
-                              <div className="flex items-center gap-4 opacity-[60%] bg-[#757b87]  border-[#979797] justify-evenly h-10 w-[110px] rounded-full ">
+                              <div className="flex items-center gap-4 opacity-[60%] bg-[#757b87]  border-[#979797] justify-evenly h-10 lg:h-10 w-[110px] rounded-full ">
                                 <img src="/assets/icon-play.svg" />
                                 <h3 className="font-Outfit text-white">
                                   {" "}
@@ -194,7 +196,9 @@ function Home() {
                               </h4>
                               <h4 className="text-[15px]">{rating}</h4>
                             </div>
-                            <h2 className="text-[24px]">{title}</h2>
+                            <h2 className=" text-[15px] lg:text-[24px]">
+                              {title}
+                            </h2>
                           </div>
                         </section>
                       </div>
@@ -203,11 +207,11 @@ function Home() {
                 })}
             </article>
           </div>
-          <div className="">
-            <h3 className="font-Outfit font-light text-white text-[32px]">
+          <div className="max-w-[120rem]">
+            <h3 className="font-Outfit font-light text-white text-[20px] lg:text-[32px]">
               Recommended for you
             </h3>
-            <div className="grid md:grid-cols-3 gap-6 lg:grid-cols-4 lg:gap-7 py-4">
+            <div className="grid grid-cols-[164px_164px] md:grid-cols-3  md:gap-6 lg:grid-cols-4 lg:gap-7 py-4  gap-3 justify-evenly">
               {fetchedData
                 .filter((s) => !s.isTrending)
                 .map((s, i) => {
@@ -224,7 +228,7 @@ function Home() {
                   return (
                     <section className="flex flex-col gap-1" key={i}>
                       <div
-                        className={`font-Outfit text-white cursor-pointer w-[200px] h-[140px] lg:w-[280px]  lg:h-[174px] rounded-lg bg-cover bg-no-repeat relative`}
+                        className={`font-Outfit text-white cursor-pointer  h-[110px] md:w-[200px] md:h-[140px] lg:w-[280px]  lg:h-[174px] rounded-lg bg-cover bg-no-repeat relative`}
                         style={{ backgroundImage: `url(${regular.large})` }}
                         ref={hoverRef}
                         onMouseEnter={() => setName(title)}
@@ -234,8 +238,8 @@ function Home() {
                         <section
                           className={`${
                             name === title
-                              ? "overflow-hidden flex flex-col px-3 gap-[1.7rem] py-2 justify-between"
-                              : " overflow-hidden flex flex-col px-3 gap-[0.9rem] py-2 justify-between"
+                              ? "overflow-hidden flex flex-col px-1 lg:px-3 gap-[0.2rem] lg:gap-[1.7rem] py-1 lg:py-2 justify-between"
+                              : " overflow-hidden flex flex-col px-1 lg:px-3 lg:gap-[0.9rem] py-1 lg:py-2 justify-between"
                           }`}
                         >
                           <div className="flex items-end justify-end">
@@ -251,8 +255,8 @@ function Home() {
                             </button>
                           </div>
                           {name === title && (
-                            <div className="justify-center flex transition ease-linear duration-700 translate-x-3 ">
-                              <div className="flex items-center gap-4 opacity-[60%] bg-[#757b87]  border-[#979797] justify-evenly h-10 w-[110px] rounded-full ">
+                            <div className="justify-center flex transition ease-linear duration-700 lg:translate-x-3 ">
+                              <div className="flex items-center lg:gap-4 opacity-[60%] bg-[#757b87]  border-[#979797] justify-evenly h-10 w-[100px] lg:w-[110px] rounded-full ">
                                 <img src="/assets/icon-play.svg" />
                                 <h3 className="font-Outfit text-white">
                                   {" "}
@@ -264,9 +268,11 @@ function Home() {
                         </section>
                       </div>
                       <div className="flex flex-col font-Outfit text-white ">
-                        <div className="flex">
-                          <h4 className="text-[15px]">{year} &#46; </h4>
-                          <h4 className="flex items-center gap-1 text-[15px] font-medium">
+                        <div className="flex gap-2 items-center">
+                          <h4 className=" text-[11px] lg:text-[15px]">
+                            {year} &#46;{" "}
+                          </h4>
+                          <h4 className="flex items-center gap-1 text-[11px] lg:text-[15px] font-medium">
                             {category === "Movie" ? (
                               <img
                                 src="/assets/icon-category-movie.svg"
@@ -280,9 +286,13 @@ function Home() {
                             )}
                             {category} &#46;
                           </h4>
-                          <h4 className="text-[15px]">{rating}</h4>
+                          <h4 className=" text-[11px] lg:text-[15px]">
+                            {rating}
+                          </h4>
                         </div>
-                        <h2 className="text-[18px] font-extralight">{title}</h2>
+                        <h2 className=" text-[14px] lg:text-[18px] font-medium">
+                          {title}
+                        </h2>
                       </div>
                     </section>
                   );
