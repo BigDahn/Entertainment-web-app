@@ -27,10 +27,10 @@ function BookMarked() {
         //value={searchName}
       />
       <div className="">
-        <h3 className="font-Outfit font-light text-white text-[32px]">
+        <h3 className="font-Outfit font-light text-white text-[20px] lg:text-[32px]">
           Bookmarked Movies
         </h3>
-        <div className="grid grid-cols-4 gap-7 py-4">
+        <div className="grid grid-cols-[164px_164px] lg:grid-cols-4 gap-2 justify-evenly lg:gap-7 py-4">
           {fetchedData
             .filter((s) => s.isBookmarked)
             .filter((s) => s.category === "Movie")
@@ -43,7 +43,7 @@ function BookMarked() {
                 <section className="flex flex-col gap-1">
                   <div
                     key={i}
-                    className={`font-Outfit text-white cursor-pointer w-[280px]  h-[174px] rounded-lg bg-cover bg-no-repeat relative`}
+                    className={`font-Outfit text-white cursor-pointer lg:w-[280px]  h-[110px] lg:h-[174px] rounded-lg bg-cover bg-no-repeat relative`}
                     style={{ backgroundImage: `url(${regular.large})` }}
                     ref={hoverRef}
                     onMouseEnter={() => setName(title)}
@@ -53,8 +53,8 @@ function BookMarked() {
                     <section
                       className={`${
                         name === title
-                          ? "overflow-hidden flex flex-col px-3 gap-[1.7rem] py-2 justify-between"
-                          : " overflow-hidden flex flex-col px-3 gap-[0.9rem] py-2 justify-between"
+                          ? "overflow-hidden flex flex-col lg:px-3 lg:gap-[1.7rem] lg:py-2 py-1 px-2 justify-between"
+                          : " overflow-hidden flex flex-col lg:px-3 lg:gap-[0.9rem] lg:py-2 py-1 px-2 justify-between"
                       }`}
                     >
                       <div className="flex items-end justify-end">
@@ -70,8 +70,8 @@ function BookMarked() {
                         </button>
                       </div>
                       {name === title && (
-                        <div className="justify-center flex transition ease-linear duration-700 translate-x-3 ">
-                          <div className="flex items-center gap-4 opacity-[60%] bg-[#757b87]  border-[#979797] justify-evenly h-10 w-[110px] rounded-full ">
+                        <div className="justify-center flex transition ease-linear duration-700 lg:translate-x-3 ">
+                          <div className="flex items-center gap-4 opacity-[60%] bg-[#757b87]  border-[#979797] justify-evenly h-10 w-[100px] lg:w-[110px] rounded-full ">
                             <img src="/assets/icon-play.svg" />
                             <h3 className="font-Outfit text-white"> Play</h3>
                           </div>
@@ -80,9 +80,11 @@ function BookMarked() {
                     </section>
                   </div>
                   <div className="flex flex-col font-Outfit text-white ">
-                    <div className="flex">
-                      <h4 className="text-[15px]">{year} &#46; </h4>
-                      <h4 className="flex items-center gap-1 text-[15px] font-medium">
+                    <div className="flex gap-1 items-center">
+                      <h4 className=" text-[11px] lg:text-[15px]">
+                        {year} &#46;{" "}
+                      </h4>
+                      <h4 className="flex items-center gap-1 text-[11px] lg:text-[15px] font-medium">
                         {category === "Movie" ? (
                           <img
                             src="/assets/icon-category-movie.svg"
@@ -96,9 +98,11 @@ function BookMarked() {
                         )}
                         {category} &#46;
                       </h4>
-                      <h4 className="text-[15px]">{rating}</h4>
+                      <h4 className=" text-[11px] lg:text-[15px]">{rating}</h4>
                     </div>
-                    <h2 className="text-[18px] font-extralight">{title}</h2>
+                    <h2 className="lg:text-[18px] text-[14px] font-medium">
+                      {title}
+                    </h2>
                   </div>
                 </section>
               );
@@ -106,10 +110,10 @@ function BookMarked() {
         </div>
       </div>
       <div className="">
-        <h3 className="font-Outfit font-light text-white text-[32px]">
+        <h3 className="font-Outfit font-light text-white text-[20px] lg:text-[32px]">
           Bookmarked Tv Series
         </h3>
-        <div className="grid grid-cols-4 gap-7 py-4">
+        <div className="grid grid-cols-[164px_164px] lg:grid-cols-4 lg:gap-7 gap-2 justify-evenly py-4">
           {fetchedData
             .filter((s) => s.isBookmarked)
             .filter((s) => s.category === "TV Series")
@@ -122,7 +126,7 @@ function BookMarked() {
                 <section className="flex flex-col gap-1">
                   <div
                     key={i}
-                    className={`font-Outfit text-white cursor-pointer w-[280px]  h-[174px] rounded-lg bg-cover bg-no-repeat relative`}
+                    className={`font-Outfit text-white cursor-pointer lg:w-[280px] w-[164px] h-[110px]  lg:h-[174px] rounded-lg bg-cover bg-no-repeat relative`}
                     style={{ backgroundImage: `url(${regular.large})` }}
                     ref={hoverRef}
                     onMouseEnter={() => setName(title)}
@@ -132,8 +136,8 @@ function BookMarked() {
                     <section
                       className={`${
                         name === title
-                          ? "overflow-hidden flex flex-col px-3 gap-[1.7rem] py-2 justify-between"
-                          : " overflow-hidden flex flex-col px-3 gap-[0.9rem] py-2 justify-between"
+                          ? "overflow-hidden flex flex-col px-2 py-1 lg:px-3 lg:gap-[1.7rem] lg:py-2 justify-between"
+                          : " overflow-hidden flex flex-col px-2 py-1 lg:px-3 lg:gap-[0.9rem] lg:py-2 justify-between"
                       }`}
                     >
                       <div className="flex items-end justify-end">
@@ -149,8 +153,8 @@ function BookMarked() {
                         </button>
                       </div>
                       {name === title && (
-                        <div className="justify-center flex transition ease-linear duration-700 translate-x-3 ">
-                          <div className="flex items-center gap-4 opacity-[60%] bg-[#757b87]  border-[#979797] justify-evenly h-10 w-[110px] rounded-full ">
+                        <div className="justify-center flex transition ease-linear duration-700 lg:translate-x-3 ">
+                          <div className="flex items-center gap-4 opacity-[60%] bg-[#757b87]  border-[#979797] justify-evenly h-10 w-[100px] lg:w-[110px] rounded-full ">
                             <img src="/assets/icon-play.svg" />
                             <h3 className="font-Outfit text-white"> Play</h3>
                           </div>
@@ -159,9 +163,11 @@ function BookMarked() {
                     </section>
                   </div>
                   <div className="flex flex-col font-Outfit text-white ">
-                    <div className="flex">
-                      <h4 className="text-[15px]">{year} &#46; </h4>
-                      <h4 className="flex items-center gap-1 text-[15px] font-medium">
+                    <div className="flex gap-1 items-center">
+                      <h4 className=" text-[11px] lg:text-[15px]">
+                        {year} &#46;{" "}
+                      </h4>
+                      <h4 className="flex items-center gap-1 text-[11px] lg:text-[15px] font-medium">
                         {category === "Movie" ? (
                           <img
                             src="/assets/icon-category-movie.svg"
@@ -175,9 +181,11 @@ function BookMarked() {
                         )}
                         {category} &#46;
                       </h4>
-                      <h4 className="text-[15px]">{rating}</h4>
+                      <h4 className=" text-[11px] lg:text-[15px]">{rating}</h4>
                     </div>
-                    <h2 className="text-[18px] font-extralight">{title}</h2>
+                    <h2 className="lg:text-[18px]  text-[14px] font-medium">
+                      {title}
+                    </h2>
                   </div>
                 </section>
               );
