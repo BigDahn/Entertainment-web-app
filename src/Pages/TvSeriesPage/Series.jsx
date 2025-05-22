@@ -34,7 +34,7 @@ function Series() {
           {series.length <= 0 ? (
             <NotFound />
           ) : (
-            <h3 className="font-Outfit text-[32px] font-light text-white">
+            <h3 className="font-Outfit text-[20px] lg:text-[32px] font-light text-white">
               Found {series.length} results of {`"${searchName}"`}{" "}
             </h3>
           )}
@@ -42,11 +42,11 @@ function Series() {
       )}
       <div className="grid gap-3">
         {series.length > 0 && (
-          <h3 className="font-Outfit font-light text-[32px] text-white">
+          <h3 className="font-Outfit font-light text-[20px] lg:text-[32px] text-white">
             Tv Series
           </h3>
         )}
-        <div className="grid grid-cols-[280px_280px_280px_280px] gap-5">
+        <div className="grid grid-cols-[164px_164px] md:grid-cols-[204px_204px] lg:grid-cols-[280px_280px_280px_280px] justify-evenly gap-2 lg:gap-5">
           {series.map((s, i) => {
             const { title, year, rating, category, thumbnail, isBookmarked } =
               s;
@@ -55,7 +55,7 @@ function Series() {
               <section className="flex flex-col gap-1">
                 <div
                   key={i}
-                  className={`font-Outfit text-white cursor-pointer w-[280px]  h-[174px] rounded-lg bg-cover bg-no-repeat relative`}
+                  className={`font-Outfit text-white cursor-pointer h-[110px] lg:w-[280px]  lg:h-[174px] rounded-lg bg-cover bg-no-repeat relative`}
                   style={{ backgroundImage: `url(${regular.large})` }}
                   ref={hoverRef}
                   onMouseEnter={() => setName(title)}
@@ -65,8 +65,8 @@ function Series() {
                   <section
                     className={`${
                       name === title
-                        ? "overflow-hidden flex flex-col px-3 gap-[1.7rem] py-2 justify-between"
-                        : " overflow-hidden flex flex-col px-3 gap-[0.9rem] py-2 justify-between"
+                        ? "overflow-hidden flex flex-col lg:px-3 lg:gap-[1.7rem] py-1 px-2 lg:py-2 justify-between"
+                        : " overflow-hidden flex flex-col lg:px-3 lg:gap-[0.9rem] px-2 py-1 lg:py-2 justify-between"
                     }`}
                   >
                     <div className="flex items-end justify-end">
@@ -82,8 +82,8 @@ function Series() {
                       </button>
                     </div>
                     {name === title && (
-                      <div className="justify-center flex transition ease-linear duration-700 translate-x-3 ">
-                        <div className="flex items-center gap-4 opacity-[60%] bg-[#757b87]  border-[#979797] justify-evenly h-10 w-[110px] rounded-full ">
+                      <div className="justify-center flex transition ease-linear duration-700 lg:translate-x-3 ">
+                        <div className="flex items-center gap-4 opacity-[60%] bg-[#757b87]  border-[#979797] justify-evenly h-10 w-[100px] lg:w-[110px] rounded-full ">
                           <img src="/assets/icon-play.svg" />
                           <h3 className="font-Outfit text-white"> Play</h3>
                         </div>
@@ -92,9 +92,11 @@ function Series() {
                   </section>
                 </div>
                 <div className="flex flex-col font-Outfit text-white ">
-                  <div className="flex">
-                    <h4 className="text-[15px]">{year} &#46; </h4>
-                    <h4 className="flex items-center gap-1 text-[15px] font-medium">
+                  <div className="flex gap-1">
+                    <h4 className=" text-[11px] lg:text-[15px]">
+                      {year} &#46;{" "}
+                    </h4>
+                    <h4 className="flex items-center gap-1 text-[11px] lg:text-[15px] font-medium">
                       {category === "Movie" ? (
                         <img
                           src="/assets/icon-category-movie.svg"
@@ -108,9 +110,11 @@ function Series() {
                       )}
                       {category} &#46;
                     </h4>
-                    <h4 className="text-[15px]">{rating}</h4>
+                    <h4 className=" text-[11px] lg:text-[15px]">{rating}</h4>
                   </div>
-                  <h2 className="text-[18px] font-extralight">{title}</h2>
+                  <h2 className="lg:text-[18px] font-medium text-[14px]">
+                    {title}
+                  </h2>
                 </div>
               </section>
             );

@@ -34,7 +34,7 @@ function Home() {
             0 ? (
               <NotFound />
             ) : (
-              <h3 className="font-Outfit text-[32px] font-light text-white">
+              <h3 className="font-Outfit text-[20px] lg:text-[32px] font-light text-white">
                 Found{" "}
                 {fetchedData.filter((s) => s.title.includes(searchName)).length}{" "}
                 {fetchedData.filter((s) => s.title.includes(searchName))
@@ -45,7 +45,7 @@ function Home() {
               </h3>
             )}
           </div>
-          <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-[164px_164px] md:grid-cols-3 lg:grid-cols-4 gap-4 justify-evenly">
             {fetchedData.map((s, i) => {
               const { title, year, rating, category, thumbnail, isBookmarked } =
                 s;
@@ -55,7 +55,7 @@ function Home() {
                 <section className="flex flex-col gap-1">
                   <div
                     key={i}
-                    className={`font-Outfit text-white cursor-pointer w-[280px]  h-[174px] rounded-lg bg-cover bg-no-repeat relative`}
+                    className={`font-Outfit text-white cursor-pointer h-[110px] lg:w-[280px]  lg:h-[174px] rounded-lg bg-cover bg-no-repeat relative`}
                     style={{ backgroundImage: `url(${regular.large})` }}
                     ref={hoverRef}
                     onMouseEnter={() => setName(title)}
@@ -91,9 +91,11 @@ function Home() {
                     </section>
                   </div>
                   <div className="flex flex-col font-Outfit text-white ">
-                    <div className="flex">
-                      <h4 className="text-[15px]">{year} &#46; </h4>
-                      <h4 className="flex items-center gap-1 text-[15px] font-medium">
+                    <div className="flex gap-2">
+                      <h4 className="text-[11px] lg:text-[15px]">
+                        {year} &#46;{" "}
+                      </h4>
+                      <h4 className="flex items-center gap-1 text-[11px] lg:text-[15px] font-medium">
                         {category === "Movie" ? (
                           <img
                             src="/assets/icon-category-movie.svg"
@@ -107,9 +109,11 @@ function Home() {
                         )}
                         {category} &#46;
                       </h4>
-                      <h4 className="text-[15px]">{rating}</h4>
+                      <h4 className="text-[11px] lg:text-[15px]">{rating}</h4>
                     </div>
-                    <h2 className="text-[18px] font-extralight">{title}</h2>
+                    <h2 className=" text-[14px] lg:text-[18px] font-medium">
+                      {title}
+                    </h2>
                   </div>
                 </section>
               );
@@ -211,7 +215,7 @@ function Home() {
             <h3 className="font-Outfit font-light text-white text-[20px] lg:text-[32px]">
               Recommended for you
             </h3>
-            <div className="grid grid-cols-[164px_164px] md:grid-cols-3  md:gap-6 lg:grid-cols-4 lg:gap-7 py-4  gap-3 justify-evenly">
+            <div className="grid grid-cols-[164px_164px] md:grid-cols-3  md:gap-6 lg:grid-cols-4 lg:gap-7 py-4  gap-2 justify-evenly">
               {fetchedData
                 .filter((s) => !s.isTrending)
                 .map((s, i) => {
