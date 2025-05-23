@@ -22,7 +22,7 @@ function BookMarked() {
       <SearchBar
         type={"text"}
         placeholder="Search for bookmarked shows"
-        className="w-full relative pl-10 py-[0.3rem] outline-none text-white"
+        className="w-[99%] relative pl-10 py-[0.3rem] outline-none text-white"
         // onChange={(e) => setSearchName(e.target.value)}
         //value={searchName}
       />
