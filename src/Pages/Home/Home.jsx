@@ -45,7 +45,7 @@ function Home() {
               </h3>
             )}
           </div>
-          <div className="grid grid-cols-[164px_164px] md:grid-cols-3 lg:grid-cols-4 gap-4 justify-evenly">
+          <div className="grid grid-cols-[164px_164px] md:grid-cols-[220px_220px_220px] px-1 2xl:grid-cols-4 gap-4 justify-evenly md:justify-start md:gap-x-[2.4rem] lg:gap-x-[6rem] 2xl:gap-4">
             {fetchedData.map((s, i) => {
               const { title, year, rating, category, thumbnail, isBookmarked } =
                 s;
@@ -55,7 +55,7 @@ function Home() {
                 <section className="flex flex-col gap-1">
                   <div
                     key={i}
-                    className={`font-Outfit text-white cursor-pointer h-[110px] lg:w-[280px]  lg:h-[174px] rounded-lg bg-cover bg-no-repeat relative`}
+                    className={`font-Outfit text-white cursor-pointer h-[110px] md:h-[140px] lg:w-[280px]  lg:h-[174px] rounded-lg bg-cover bg-no-repeat relative`}
                     style={{ backgroundImage: `url(${regular.large})` }}
                     ref={hoverRef}
                     onMouseEnter={() => setName(title)}
@@ -64,8 +64,8 @@ function Home() {
                     <section
                       className={`${
                         name === title
-                          ? "overflow-hidden flex flex-col px-3 gap-[1.7rem] py-2 justify-between"
-                          : " overflow-hidden flex flex-col px-3 gap-[0.9rem] py-2 justify-between"
+                          ? "overflow-hidden flex flex-col px-3 2xl:gap-[1.7rem] md:gap-[0.5rem] lg:gap-[1.6rem] py-2 justify-between"
+                          : " overflow-hidden flex flex-col px-3 2xl:gap-[0.9rem] py-2 justify-between"
                       }`}
                     >
                       <div className="flex items-end justify-end">
@@ -81,7 +81,7 @@ function Home() {
                         </button>
                       </div>
                       {name === title && (
-                        <div className="justify-center flex transition ease-linear duration-700 translate-x-3 ">
+                        <div className="justify-center flex transition ease-linear duration-700 2xl:translate-x-3 ">
                           <div className="flex items-center gap-4 opacity-[60%] bg-[#757b87]  border-[#979797] justify-evenly h-10 w-[110px] rounded-full ">
                             <img src="/assets/icon-play.svg" />
                             <h3 className="font-Outfit text-white"> Play</h3>
@@ -95,7 +95,7 @@ function Home() {
                       <h4 className="text-[11px] lg:text-[15px]">
                         {year} &#46;{" "}
                       </h4>
-                      <h4 className="flex items-center gap-1 text-[11px] lg:text-[15px] font-medium">
+                      <h4 className="flex items-center gap-1 text-[11px] md:text-[13px] lg:text-[15px] font-medium">
                         {category === "Movie" ? (
                           <img
                             src="/assets/icon-category-movie.svg"
@@ -109,9 +109,11 @@ function Home() {
                         )}
                         {category} &#46;
                       </h4>
-                      <h4 className="text-[11px] lg:text-[15px]">{rating}</h4>
+                      <h4 className="text-[11px] md:text-[13px] lg:text-[15px]">
+                        {rating}
+                      </h4>
                     </div>
-                    <h2 className=" text-[14px] lg:text-[18px] font-medium">
+                    <h2 className=" text-[14px] md:text-[18px] font-medium">
                       {title}
                     </h2>
                   </div>
@@ -126,7 +128,7 @@ function Home() {
             <h2 className="font-Outfit text-white text-[20px] lg:text-[32px] ">
               Trending
             </h2>
-            <article className="grid grid-cols-[240px_240px_240px_240px_240px] md:grid-cols-[470px_470px_470px_470px_470px] lg:grid-cols-[450px_450px_450px_450px_450px] gap-3 lg:gap-5 overflow-x-scroll overflow-hidden ">
+            <article className="grid grid-cols-[240px_240px_240px_240px_240px]  md:grid-cols-[470px_470px_470px_470px_470px] lg:grid-cols-[450px_450px_450px_450px_450px] gap-3 lg:gap-5 overflow-x-scroll overflow-hidden ">
               {fetchedData
                 .filter((s) => s.isTrending)
                 .map((s, i) => {
@@ -144,7 +146,7 @@ function Home() {
                     <>
                       <div
                         key={i}
-                        className={`font-Outfit text-white cursor-pointer  h-[140px] lg:h-[230px] rounded-lg bg-cover bg-no-repeat relative`}
+                        className={`font-Outfit text-white cursor-pointer  h-[140px] md:h-[230px] rounded-lg bg-cover bg-no-repeat relative`}
                         style={{ backgroundImage: `url(${trending.large})` }}
                         ref={hoverRef}
                         onMouseEnter={() => setName(title)}
@@ -154,8 +156,8 @@ function Home() {
                         <section
                           className={`${
                             name === title
-                              ? "overflow-hidden flex flex-col px-3 gap-[0.2rem] lg:gap-[2.7rem] py-3 justify-between"
-                              : " overflow-hidden flex flex-col px-3 gap-[2.9rem] lg:gap-[7.9rem] py-3 justify-between "
+                              ? "overflow-hidden flex flex-col px-3 gap-[0.2rem] md:gap-[2.5rem] lg:gap-[2.7rem] py-3 justify-between"
+                              : " overflow-hidden flex flex-col px-3 gap-[2.9rem] md:gap-[7.5rem] lg:gap-[7.9rem] py-3 justify-between "
                           }`}
                         >
                           <div className="flex items-end justify-end">
@@ -171,8 +173,8 @@ function Home() {
                             </button>
                           </div>
                           {name === title && (
-                            <div className="justify-center flex transition ease-linear duration-700 lg:translate-x-3 ">
-                              <div className="flex items-center gap-4 opacity-[60%] bg-[#757b87]  border-[#979797] justify-evenly w-[100px] h-10 lg:w-[110px] rounded-full ">
+                            <div className="justify-center flex transition ease-linear duration-700 2xl:translate-x-3 ">
+                              <div className="flex items-center gap-4 opacity-[60%] bg-[#757b87]  border-[#979797] justify-evenly w-[100px] h-10 md:w-[110px] rounded-full ">
                                 <img src="/assets/icon-play.svg" />
                                 <h3 className="font-Outfit text-white">
                                   {" "}
@@ -200,7 +202,7 @@ function Home() {
                               </h4>
                               <h4 className="text-[15px]">{rating}</h4>
                             </div>
-                            <h2 className=" text-[15px] lg:text-[24px]">
+                            <h2 className=" text-[15px] md:text-[24px]">
                               {title}
                             </h2>
                           </div>
@@ -212,10 +214,10 @@ function Home() {
             </article>
           </div>
           <div className="max-w-[120rem]">
-            <h3 className="font-Outfit font-light text-white text-[20px] lg:text-[32px]">
+            <h3 className="font-Outfit font-light text-white text-[20px] md:text-[32px]">
               Recommended for you
             </h3>
-            <div className="grid grid-cols-[164px_164px] md:grid-cols-3  md:gap-6 lg:grid-cols-4 lg:gap-7 py-4  gap-2 justify-evenly">
+            <div className="grid grid-cols-[164px_164px]  md:grid-cols-[220px_220px_220px]  md:gap-x-[2rem] md:gap-y-[1.2rem] 2xl:grid-cols-4 2xl:gap-x-4 py-4  gap-2 justify-evenly md:justify-evenly lg:justify-start lg:gap-x-[7rem]">
               {fetchedData
                 .filter((s) => !s.isTrending)
                 .map((s, i) => {
@@ -242,8 +244,8 @@ function Home() {
                         <section
                           className={`${
                             name === title
-                              ? "overflow-hidden flex flex-col px-1 lg:px-3 gap-[0.2rem] lg:gap-[1.7rem] py-1 lg:py-2 justify-between"
-                              : " overflow-hidden flex flex-col px-1 lg:px-3 lg:gap-[0.9rem] py-1 lg:py-2 justify-between"
+                              ? "overflow-hidden flex flex-col px-1 lg:px-2 2xl:px-3  md:px-1.5 gap-[0.2rem] md:gap-[1rem] lg:gap-[2rem] 2xl:gap-[1.7rem] py-1 2xl:py-2 justify-between"
+                              : " overflow-hidden flex flex-col px-1 lg:px-2 md:px-1.5 2xl:px-3 2xl:gap-[0.9rem] py-1 2xl:py-2 justify-between"
                           }`}
                         >
                           <div className="flex items-end justify-end">
@@ -259,7 +261,7 @@ function Home() {
                             </button>
                           </div>
                           {name === title && (
-                            <div className="justify-center flex transition ease-linear duration-700 lg:translate-x-3 ">
+                            <div className="justify-center flex transition ease-linear duration-700 2xl:translate-x-3 ">
                               <div className="flex items-center lg:gap-4 opacity-[60%] bg-[#757b87]  border-[#979797] justify-evenly h-10 w-[100px] lg:w-[110px] rounded-full ">
                                 <img src="/assets/icon-play.svg" />
                                 <h3 className="font-Outfit text-white">
@@ -273,10 +275,10 @@ function Home() {
                       </div>
                       <div className="flex flex-col font-Outfit text-white ">
                         <div className="flex gap-2 items-center">
-                          <h4 className=" text-[11px] lg:text-[15px]">
+                          <h4 className=" text-[11px] md:text-[13px] lg:text-[15px]">
                             {year} &#46;{" "}
                           </h4>
-                          <h4 className="flex items-center gap-1 text-[11px] lg:text-[15px] font-medium">
+                          <h4 className="flex items-center gap-1 text-[11px] md:text-[13px] lg:text-[15px] font-medium">
                             {category === "Movie" ? (
                               <img
                                 src="/assets/icon-category-movie.svg"
@@ -290,11 +292,11 @@ function Home() {
                             )}
                             {category} &#46;
                           </h4>
-                          <h4 className=" text-[11px] lg:text-[15px]">
+                          <h4 className=" text-[11px] md:text-[13px] lg:text-[15px]">
                             {rating}
                           </h4>
                         </div>
-                        <h2 className=" text-[14px] lg:text-[18px] font-medium">
+                        <h2 className=" text-[14px] md:text-[18px] font-medium">
                           {title}
                         </h2>
                       </div>

@@ -19,11 +19,7 @@ function BookMarked() {
     dispatch({ type: "bookmarked", payload: name });
   }
 
-  console.log(
-    fetchedData
-      .filter((s) => s.isBookmarked)
-      .filter((s) => s.category === "TV Series")
-  );
+  console.log(fetchedData);
 
   return (
     <main className="grid gap-3">
@@ -34,7 +30,12 @@ function BookMarked() {
         onChange={(e) => setSearchName(e.target.value)}
         value={searchName}
       />
-      {fetchedData.length < 1 ? (
+      {fetchedData
+        .filter((s) => s.isBookmarked)
+        .filter((s) => s.category === "Movie").length < 1 &&
+      fetchedData
+        .filter((s) => s.isBookmarked)
+        .filter((s) => s.category === "TV Series").length < 1 ? (
         <NotFound />
       ) : (
         <>
