@@ -46,7 +46,7 @@ function Series() {
             Tv Series
           </h3>
         )}
-        <div className="grid grid-cols-[164px_164px] md:grid-cols-[204px_204px] lg:grid-cols-[280px_280px_280px_280px] justify-evenly gap-2 lg:gap-5">
+        <div className="grid grid-cols-[164px_164px] md:grid-cols-[204px_204px] lg:grid-cols-[280px_280px_280px_280px] justify-evenly gap-2 lg:justify-start  lg:gap-x-[3.5rem] lg:gap-y-[1rem]">
           {series.map((s, i) => {
             const { title, year, rating, category, thumbnail, isBookmarked } =
               s;

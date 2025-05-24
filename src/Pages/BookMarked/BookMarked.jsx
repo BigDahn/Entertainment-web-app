@@ -1,21 +1,24 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useEntertainment } from "../../context/Entertainment";
 import SearchBar from "../../ui/SearchBar";
 
 function BookMarked() {
   const hoverRef = useRef(null);
-  const { fetchedData, dispatch, isBookmarked } = useEntertainment();
+  const { fetchedData, dispatch } = useEntertainment();
 
   const [name, setName] = useState("");
+
+  const [searchName, setSearchName] = useState("");
+
+  useEffect(() => {
+    dispatch({ type: "bookmark_search", payload: searchName });
+  }, [dispatch, searchName, setSearchName]);
+
   function handleBookmarked(name) {
     dispatch({ type: "bookmarked", payload: name });
   }
 
-  console.log(
-    fetchedData
-      .filter((s) => s.title != name)
-      .filter((s) => s.category === "Movie" && s.isBookmarked)
-  );
+  console.log(fetchedData.filter((s) => s.title.includes(searchName)));
 
   return (
     <main className="grid gap-3">
@@ -23,14 +26,14 @@ function BookMarked() {
         type={"text"}
         placeholder="Search for bookmarked shows"
         className="w-[99%] relative pl-10 py-[0.3rem] outline-none text-white"
-        // onChange={(e) => setSearchName(e.target.value)}
-        //value={searchName}
+        onChange={(e) => setSearchName(e.target.value)}
+        value={searchName}
       />
       <div className="">
         <h3 className="font-Outfit font-light text-white text-[20px] lg:text-[32px]">
           Bookmarked Movies
         </h3>
-        <div className="grid grid-cols-[164px_164px] lg:grid-cols-4 gap-2 justify-evenly lg:gap-7 py-4">
+        <div className="grid grid-cols-[164px_164px] lg:grid-cols-[280px_280px_280px_280px] gap-2 justify-evenly lg:justify-start lg:gap-x-[4rem] py-3">
           {fetchedData
             .filter((s) => s.isBookmarked)
             .filter((s) => s.category === "Movie")

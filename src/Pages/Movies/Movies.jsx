@@ -47,7 +47,7 @@ function Movies() {
             Movies
           </h3>
         )}
-        <div className="grid grid-cols-[164px_164px] lg:grid-cols-[280px_280px_280px_280px] gap-2 justify-evenly  lg:gap-3 ">
+        <div className="grid grid-cols-[164px_164px] lg:grid-cols-[280px_280px_280px_280px] gap-2 justify-evenly lg:justify-start  lg:gap-x-[3.5rem] lg:gap-y-[1rem] ">
           {movies.map((s, i) => {
             const { title, year, rating, category, thumbnail, isBookmarked } =
               s;

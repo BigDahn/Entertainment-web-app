@@ -74,18 +74,6 @@ function reducer(state, action) {
         return s;
       });
 
-      console.log(
-        state.fetchedData
-          .filter((s) => s.title != action.payload)
-          .filter((s) => s.category === "Movie" && s.isBookmarked)
-      );
-
-      console.log(
-        state.fetchedData
-          .filter((s) => s.title != action.payload)
-          .filter((s) => s.category === "Movie" && s.isBookmarked)
-      );
-
       return {
         ...state,
         data: newData,
@@ -117,6 +105,15 @@ function reducer(state, action) {
           return s;
         }),
         isBookmarked: state.data.filter((s) => s.title != action.payload),
+      };
+    }
+    case "bookmark_search": {
+      return {
+        ...state,
+        fetchedData:
+          action.payload === ""
+            ? state.data
+            : state.data.filter((s) => s.title.includes(action.payload)),
       };
     }
   }
