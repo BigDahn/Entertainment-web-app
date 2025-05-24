@@ -34,7 +34,7 @@ function Home() {
             0 ? (
               <NotFound />
             ) : (
-              <h3 className="font-Outfit text-[20px] lg:text-[32px] font-light text-white">
+              <h3 className="font-Outfit text-[20px] md:text-[32px] font-light text-white">
                 Found{" "}
                 {fetchedData.filter((s) => s.title.includes(searchName)).length}{" "}
                 {fetchedData.filter((s) => s.title.includes(searchName))
@@ -125,7 +125,7 @@ function Home() {
       ) : (
         <main className="grid grid-rows-1 gap-4">
           <div className="max-h-[300px] max-w-[120rem] overflow-hidden grid gap-3 overflow-y-hidden ">
-            <h2 className="font-Outfit text-white text-[20px] lg:text-[32px] ">
+            <h2 className="font-Outfit text-white text-[20px] md:text-[32px] ">
               Trending
             </h2>
             <article className="grid grid-cols-[240px_240px_240px_240px_240px]  md:grid-cols-[470px_470px_470px_470px_470px] lg:grid-cols-[450px_450px_450px_450px_450px] gap-3 lg:gap-5 overflow-x-scroll overflow-hidden ">
@@ -217,7 +217,7 @@ function Home() {
             <h3 className="font-Outfit font-light text-white text-[20px] md:text-[32px]">
               Recommended for you
             </h3>
-            <div className="grid grid-cols-[164px_164px]  md:grid-cols-[220px_220px_220px]  md:gap-x-[2rem] md:gap-y-[1.2rem] 2xl:grid-cols-4 2xl:gap-x-4 py-4  gap-2 justify-evenly md:justify-evenly lg:justify-start lg:gap-x-[7rem]">
+            <div className="grid grid-cols-[164px_164px]  md:grid-cols-[220px_220px_220px]  md:gap-x-[2rem] md:gap-y-[1.2rem] 2xl:grid-cols-4 2xl:gap-x-[1rem] py-4  gap-2 justify-evenly md:justify-evenly lg:justify-start lg:gap-x-[7rem]">
               {fetchedData
                 .filter((s) => !s.isTrending)
                 .map((s, i) => {
