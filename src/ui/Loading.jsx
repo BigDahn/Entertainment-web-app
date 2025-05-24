@@ -9,7 +9,7 @@ function Loading() {
       dispatch({ type: "loading" });
     }, 1000);
   });
-  return <span class="loader"></span>;
+  return <span className="loader"></span>;
 }
 
 export default Loading;
