@@ -11,8 +11,6 @@ function Signup() {
 
   const [error, setError] = useState("");
 
-  console.log(Email);
-
   function handleSubmit(e) {
     e.preventDefault();
     if (!email && !password && !repeatPassword) return;
@@ -32,7 +30,7 @@ function Signup() {
     }
   }
   return (
-    <div className="flex flex-col gap-[1rem] items-center justify-center max-w-[100vh]   m-auto h-[100vh] ">
+    <div className="flex flex-col gap-[1rem] items-center justify-center    m-auto h-[100vh] ">
       <img src="/assets/logo.svg" />
 
       <div
@@ -45,7 +43,7 @@ function Signup() {
         <p>{error}</p>
       </div>
       <form
-        className="flex-col flex gap-5 bg-[#161D2F] lg:w-[46%] px-6 py-[2rem]  rounded-lg"
+        className="flex-col flex gap-5 bg-[#161D2F] w-[80%] md:w-[60%] lg:w-[46%] px-6 py-[2rem]  rounded-lg"
         onSubmit={(e) => handleSubmit(e)}
       >
         <h2 className="text-white font-light text-[32px] font-Outfit ">
@@ -55,7 +53,7 @@ function Signup() {
           type="email"
           name="email"
           placeholder="Email address"
-          className="border-b  border-gray-200 active:outline-none outline-none text-white focus:text-red-500 font-Outfit font-light text-[15px] "
+          className="border-b autofill:shadow-[inset_0_0_0px_1000px_#161D2F]  border-gray-200  autofill:text-gray-600 active:outline-none outline-none py-1 px-1 text-white font-Outfit text-[15px] font-light focus:text-red-500 "
           onChange={(e) => setEmail(e.target.value)}
           required
         />
@@ -63,14 +61,14 @@ function Signup() {
           type="password"
           name="password"
           placeholder="Password"
-          className="border-b  border-gray-200 active:outline-none outline-none font-Outfit font-light text-[15px] text-white"
+          className="border-b autofill:shadow-[inset_0_0_0px_1000px_#161D2F]  border-gray-200  autofill:text-gray-600 active:outline-none outline-none py-1 px-1 text-white font-Outfit text-[15px] font-light focus:text-red-500 "
           onChange={(e) => setPassword(e.target.value)}
         />
         <input
           type="password"
           name="Repeat password"
           placeholder="Repeat Password"
-          className="border-b  border-gray-200 active:outline-none outline-none font-Outfit font-light text-[15px] text-white"
+          className="border-b autofill:shadow-[inset_0_0_0px_1000px_#161D2F]  border-gray-200  autofill:text-gray-600 active:outline-none outline-none py-1 px-1 text-white font-Outfit text-[15px] font-light focus:text-red-500 "
           onChange={(e) => setRepeatPassword(e.target.value)}
         />
         <button className="bg-[#FC4747] px-3 py-2 rounded-md text-white font-Outfit font-light text-[15px] cursor-pointer">
