@@ -10,15 +10,22 @@ function Signup() {
   const [repeatPassword, setRepeatPassword] = useState();
 
   const [error, setError] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
+  const [checkPassword, setCheckPassword] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (!email && !password && !repeatPassword) return;
+    if (!email && !password && !repeatPassword) {
+      setError(false);
+      setErrorMsg("This field is required");
+    }
 
     if (password !== repeatPassword) {
-      setError("Password does not match");
+      setError(false);
+      setCheckPassword("Password does not match");
     }
     if (email && password === repeatPassword) {
+      setError(true);
       const data = {
         email: email,
         password: password,
@@ -33,15 +40,6 @@ function Signup() {
     <div className="flex flex-col gap-[1rem] items-center justify-center    m-auto h-[100vh] ">
       <img src="/assets/logo.svg" />
 
-      <div
-        className={`${
-          error
-            ? "bg-[#FC4747] text-white font-Outfit py-3 px-[4rem] rounded-lg"
-            : ""
-        }`}
-      >
-        <p>{error}</p>
-      </div>
       <form
         className="flex-col flex gap-5 bg-[#161D2F] w-[80%] md:w-[60%] lg:w-[46%] 2xl:w-[27%] px-6 py-[2rem]  rounded-lg"
         onSubmit={(e) => handleSubmit(e)}
@@ -49,28 +47,53 @@ function Signup() {
         <h2 className="text-white font-light text-[32px] font-Outfit ">
           Sign Up
         </h2>
-        <input
-          type="email"
-          name="email"
-          placeholder="Email address"
-          className="border-b autofill:shadow-[inset_0_0_0px_1000px_#161D2F]  border-gray-200  autofill:text-gray-600 active:outline-none outline-none py-1 px-1 text-white font-Outfit text-[15px] font-light focus:text-red-500 "
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          className="border-b autofill:shadow-[inset_0_0_0px_1000px_#161D2F]  border-gray-200  autofill:text-gray-600 active:outline-none outline-none py-1 px-1 text-white font-Outfit text-[15px] font-light focus:text-red-500 "
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <input
-          type="password"
-          name="Repeat password"
-          placeholder="Repeat Password"
-          className="border-b autofill:shadow-[inset_0_0_0px_1000px_#161D2F]  border-gray-200  autofill:text-gray-600 active:outline-none outline-none py-1 px-1 text-white font-Outfit text-[15px] font-light focus:text-red-500 "
-          onChange={(e) => setRepeatPassword(e.target.value)}
-        />
+        <div className="w-full flex flex-col gap-1">
+          <input
+            type="email"
+            name="email"
+            placeholder="Email address"
+            className="border-b autofill:shadow-[inset_0_0_0px_1000px_#161D2F]  border-b-gray-200  autofill:text-gray-600 active:outline-none outline-none py-1 px-1 text-white font-Outfit text-[15px] font-light focus:text-red-500 "
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          {!email && !error && (
+            <p className="text-[8px] text-red-500 justify-end w-full items-end flex">
+              {errorMsg}
+            </p>
+          )}
+        </div>
+        <div className="w-full flex flex-col gap-1">
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            className="border-b autofill:shadow-[inset_0_0_0px_1000px_#161D2F]  border-b-gray-200  autofill:text-gray-600 active:outline-none outline-none py-1 px-1 text-white font-Outfit text-[15px] font-light focus:text-red-500 "
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          {!password && !error && (
+            <p className="text-[8px] text-red-500 justify-end w-full items-end flex">
+              {errorMsg}
+            </p>
+          )}
+        </div>
+        <div className="w-full flex flex-col gap-1">
+          <input
+            type="password"
+            name="Repeat password"
+            placeholder="Repeat Password"
+            className="border-b autofill:shadow-[inset_0_0_0px_1000px_#161D2F]  border-gray-200  autofill:text-gray-600 active:outline-none outline-none py-1 px-1 text-white font-Outfit text-[15px] font-light focus:text-red-500 "
+            onChange={(e) => setRepeatPassword(e.target.value)}
+          />
+          {(!repeatPassword && !error && (
+            <p className="text-[8px] text-red-500 justify-end w-full items-end flex">
+              {errorMsg}
+            </p>
+          )) ||
+            (repeatPassword !== password && (
+              <p className="text-[8px] text-red-500 justify-end w-full items-end flex">
+                {checkPassword}
+              </p>
+            ))}
+        </div>
         <button className="bg-[#FC4747] px-3 py-2 rounded-md text-white font-Outfit font-light text-[15px] cursor-pointer">
           Create an account
         </button>
